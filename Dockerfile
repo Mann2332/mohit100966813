@@ -1,20 +1,20 @@
-# Use the official Node.js image
-FROM node:16-alpine
+# Use an official Node.js runtime as a parent image
+FROM node:18
 
-# Set the working directory
+# Set the working directory inside the container
 WORKDIR /app
 
-# Copy package.json and package-lock.json to the working directory
-COPY src/package.json src/package-lock.json ./
+# Copy package.json and package-lock.json before copying the rest
+COPY package.json package-lock.json ./
 
 # Install dependencies
 RUN npm install
 
-# Copy the rest of the application
-COPY src/ ./
+# Copy all source files into the working directory
+COPY . .
 
-# Expose the required port for Cloud Run
+# Expose port 8080 (required for Cloud Run)
 EXPOSE 8080
 
-# Start the application
+# Command to start the application
 CMD ["npm", "start"]
