@@ -4,7 +4,7 @@ steps:
       - 'build'
       - '-t'
       - 'us-central1-docker.pkg.dev/promising-era-448623-i8/mohit100966813/app:$COMMIT_SHA'
-      - '.'
+      - './src'
 
   - name: 'gcr.io/cloud-builders/docker'
     args: 
