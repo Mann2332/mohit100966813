@@ -1,9 +1,16 @@
 steps:
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'us-central1-docker.pkg.dev/promising-era-448623-i8/mohit100966813/app:$COMMIT_SHA', '.']
+    args: 
+      - 'build'
+      - '-t'
+      - 'us-central1-docker.pkg.dev/promising-era-448623-i8/mohit100966813/app:$COMMIT_SHA'
+      - '.'
 
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'us-central1-docker.pkg.dev/promising-era-448623-i8/mohit100966813/app:$COMMIT_SHA']
+    args: 
+      - 'push'
+      - 'us-central1-docker.pkg.dev/promising-era-448623-i8/mohit100966813/app:$COMMIT_SHA'
 
 options:
   logging: CLOUD_LOGGING_ONLY
+
