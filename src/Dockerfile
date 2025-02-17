@@ -1,12 +1,2 @@
-FROM node:16-alpine
-
-WORKDIR /app
-
-COPY package.json package-lock.json ./
-RUN npm install
-
-COPY . .
-
 EXPOSE 8080
-
-CMD ["node", "server.js"]
+CMD ["gunicorn", "-b", "0.0.0.0:8080", "app:app"]
